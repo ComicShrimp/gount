@@ -6,8 +6,18 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello, world!")
-
 	data, _ := os.ReadFile("./words.txt")
-	fmt.Println(string(data))
+
+	_ = data
+
+	wordCount := 1
+
+	for _, word := range data {
+		if word == ' ' {
+			wordCount++
+			fmt.Println("Space detected")
+		}
+	}
+
+	fmt.Println(wordCount)
 }
