@@ -1,6 +1,10 @@
-package main
+package main_test
 
-import "testing"
+import (
+	"testing"
+
+	gount "github.com/ComicShrimp/gount"
+)
 
 func TestCountWords(t *testing.T) {
 	testCases := []struct {
@@ -28,11 +32,16 @@ func TestCountWords(t *testing.T) {
 			input: "one two\nthree four",
 			wants: 4,
 		},
+		{
+			name:  "multiple spaces",
+			input: "one two  three four",
+			wants: 4,
+		},
 	}
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			result := countWords([]byte(tc.input))
+			result := gount.CountWords([]byte(tc.input))
 
 			if result != tc.wants {
 				t.Logf("Expected: %v | Got: %v", tc.wants, result)
